@@ -10,4 +10,5 @@ export interface VibeConfig {
     status: 'skeleton' | 'hydrating' | 'complete';
     lastUpdated: string;
   };
+  plugins?: string[];
 }
