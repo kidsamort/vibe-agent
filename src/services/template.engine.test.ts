@@ -34,7 +34,7 @@ describe("TemplateEngine", () => {
     fs.readFileSync = mock((p: fs.PathOrFileDescriptor, options?: any) => {
       if (p.toString() === expectedFullPath) return mockContent;
       throw new Error(`Unexpected file read: ${p}`);
-    });
+    }) as any;
 
     const data = {
       projectName: "SuperApp",
@@ -59,7 +59,7 @@ describe("TemplateEngine", () => {
     fs.readFileSync = mock((p: fs.PathOrFileDescriptor, options?: any) => {
       if (p.toString() === expectedFullPath) return mockContent;
       throw new Error(`Unexpected file read: ${p}`);
-    });
+    }) as any;
 
     const data = {
       name: "Bob"
