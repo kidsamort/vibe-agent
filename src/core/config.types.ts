@@ -5,6 +5,7 @@ export interface VibeConfig {
     packageManager: 'bun' | 'npm' | 'yarn' | 'pnpm';
     tracking?: boolean;
   };
+  variables?: Record<string, string>;
   modules: string[];
   hydration: {
     status: 'skeleton' | 'hydrating' | 'complete';
