@@ -18,10 +18,10 @@ _Параллельная работа 4 агентов над базой._
 
 _Использование наработок первого этапа для реализации логики._
 
-- [ ] **Alpha**: Template Engine (Hydration logic).
-- [ ] **Beta**: Multi-step Interview Wizard.
-- [ ] **Gamma**: AI Hydration Prompts (MDX logic).
-- [ ] **Delta**: Plugin Engine v1.
+- [x] **Alpha**: Template Engine (Hydration logic).
+- [x] **Beta**: Multi-step Interview Wizard.
+- [x] **Gamma**: AI Hydration Prompts (MDX logic).
+- [x] **Delta**: Plugin Engine v1.
 
 ### 🚩 SYNC POINT 2
 
