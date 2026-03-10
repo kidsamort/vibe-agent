@@ -31,5 +31,6 @@ export async function runGetProjectNameStep(): Promise<string> {
     return runGetProjectNameStep(); // Retry on failure
   }
 
-  return await getProjectNameStep.action(answer);
+  const result = await getProjectNameStep.action(answer);
+  return typeof result === 'string' ? result : answer.trim();
 }
