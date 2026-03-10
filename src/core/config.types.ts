@@ -3,6 +3,7 @@ export interface VibeConfig {
     name: string;
     stack: string[];
     packageManager: 'bun' | 'npm' | 'yarn' | 'pnpm';
+    tracking?: boolean;
   };
   modules: string[];
   hydration: {
