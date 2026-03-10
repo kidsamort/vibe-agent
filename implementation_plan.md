@@ -4,10 +4,10 @@
 
 _Параллельная работа 4 агентов над базой._
 
-- [ ] **Alpha**: Config Service (YAML).
-- [ ] **Beta**: Init Command Skeleton (Steps logic).
-- [ ] **Gamma**: MDX Templates migration.
-- [ ] **Delta**: Project Environment (Bun, Types).
+- [x] **Alpha**: Config Service (YAML).
+- [x] **Beta**: Init Command Skeleton (Steps logic).
+- [x] **Gamma**: MDX Templates migration.
+- [x] **Delta**: Plugin Manager base logic.
 
 ### 🚩 SYNC POINT 1
 
