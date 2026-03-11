@@ -72,8 +72,10 @@ async function main() {
       const content = await readFile(filePath, 'utf-8');
       const relPath = relative(rootDir, filePath);
       xmlOutput += `    <file path="${relPath}">\n<![CDATA[\n${content}\n]]>\n    </file>\n`;
-    } catch (error: any) {
-      console.error(`Error reading file ${filePath}:`, error.message);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error);
+      process.stdout.write(`<error>${message}</error>\n`);
+      process.exit(1);
     }
   }
   xmlOutput += `  </files>\n`;

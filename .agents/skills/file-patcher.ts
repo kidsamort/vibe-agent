@@ -60,11 +60,17 @@ async function main() {
         console.log(`[PATCHED] ${file}`);
         changedFilesCount++;
       }
-    } catch (e: any) {
+    } catch (e: unknown) {
       // Ignore files that cannot be read as utf-8 (e.g., binaries) or other errors
-      if (e.code !== 'EISDIR' && e.code !== 'ENOENT') {
-        console.error(`Error processing ${file}:`, e.message);
+      // or other errors like permissions issues.
+      const message = e instanceof Error ? e.message : String(e);
+      // Check for specific error codes if 'e' is an Error object
+      if (e instanceof Error && 'code' in e) {
+        if (e.code === 'EISDIR' || e.code === 'ENOENT') {
+          continue; // Skip directories or non-existent files
+        }
       }
+      console.error(`Error processing ${file}:`, message);
     }
   }
 

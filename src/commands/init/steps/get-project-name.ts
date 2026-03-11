@@ -5,7 +5,7 @@ export const getProjectNameStep: Step = {
   id: "get-project-name",
   title: "Название проекта",
   prompt: "Введите название вашего проекта:",
-  validate: (input: any) => {
+  validate: (input: unknown) => {
     if (!input || typeof input !== "string" || input.trim().length === 0) {
       return "Название проекта не может быть пустым";
     }
@@ -14,9 +14,11 @@ export const getProjectNameStep: Step = {
     }
     return true;
   },
-  action: async (input: any) => {
+  action: async (input: unknown) => {
     // В будущем тут будет логика сохранения в стейт или конфиг
-    return input.trim();
+    if (typeof input === 'string') {
+      input.trim();
+    }
   }
 };
 
@@ -31,6 +33,6 @@ export async function runGetProjectNameStep(): Promise<string> {
     return runGetProjectNameStep(); // Retry on failure
   }
 
-  const result = await getProjectNameStep.action(answer);
-  return typeof result === 'string' ? result : answer.trim();
+  await getProjectNameStep.action(answer);
+  return answer as string;
 }

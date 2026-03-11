@@ -4,6 +4,7 @@ import path from 'path';
 import { runSyncLogic } from './logic';
 import { ConfigService } from '@/services/config.service';
 import type { VibeConfig } from '@/core/config.types';
+import { consola } from 'consola';
 
 // Mock ConfigService
 const mockConfig: VibeConfig = {
@@ -27,7 +28,6 @@ const mockConfig: VibeConfig = {
 const originalRead = ConfigService.read;
 
 // We will mock consola as well to avoid prompts hanging during tests
-import { consola } from 'consola';
 let promptAnswers: boolean[] = [];
 let promptCallCount = 0;
 
@@ -46,11 +46,12 @@ describe("Sync Command", () => {
       const answer = promptAnswers[promptCallCount];
       promptCallCount++;
       return answer;
-    }) as any;
-    consola.success = (() => {}) as any;
-    consola.warn = (() => {}) as any;
-    consola.info = (() => {}) as any;
-    consola.start = (() => {}) as any;
+    }) as unknown as typeof consola.prompt;
+    const silentLog = Object.assign(() => {}, { raw: () => {} }) as unknown as typeof consola.success;
+    consola.success = silentLog;
+    consola.warn = silentLog;
+    consola.info = silentLog;
+    consola.start = silentLog;
 
     if (!fs.existsSync(docsDir)) {
       fs.mkdirSync(docsDir);

@@ -5,7 +5,7 @@ export const selectStackStep: Step = {
   id: "select-stack",
   title: "Выбор стека",
   prompt: "Выберите основной стек для проекта:",
-  validate: (input: any) => {
+  validate: (input: unknown) => {
     if (!input || typeof input !== "string" || input.trim().length === 0) {
       return "Стек не может быть пустым";
     }
@@ -15,8 +15,8 @@ export const selectStackStep: Step = {
     }
     return true;
   },
-  action: async (input: any) => {
-    return input;
+  action: async (input: unknown) => {
+    // No-op
   }
 };
 
@@ -32,5 +32,6 @@ export async function runSelectStackStep(): Promise<string> {
     return runSelectStackStep(); // Retry on failure
   }
 
-  return await selectStackStep.action(answer);
+  await selectStackStep.action(answer);
+  return answer as string;
 }

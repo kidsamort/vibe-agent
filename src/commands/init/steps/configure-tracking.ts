@@ -5,14 +5,14 @@ export const configureTrackingStep: Step = {
   id: "configure-tracking",
   title: "Интеграция с трекерами",
   prompt: "Хотите подключить канбан-доски (Jira/Trello)?",
-  validate: (input: any) => {
+  validate: (input: unknown) => {
     if (typeof input !== "boolean") {
       return "Ответ должен быть да или нет";
     }
     return true;
   },
-  action: async (input: any) => {
-    return input;
+  action: async (input: unknown) => {
+    // No-op for now, just demonstrating safe type usage
   }
 };
 
@@ -27,5 +27,6 @@ export async function runConfigureTrackingStep(): Promise<boolean> {
     return runConfigureTrackingStep(); // Retry on failure
   }
 
-  return await configureTrackingStep.action(answer);
+  await configureTrackingStep.action(answer);
+  return answer as boolean;
 }

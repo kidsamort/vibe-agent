@@ -4,5 +4,5 @@ export interface Plugin {
   templates: string[];
   skills: string[];
   basePath?: string;
-  actions?: Record<string, any>;
+  actions?: Record<string, unknown>;
 }
