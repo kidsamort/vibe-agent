@@ -47,10 +47,10 @@ describe("Sync Command", () => {
       promptCallCount++;
       return answer;
     }) as any;
-    consola.success = () => {};
-    consola.warn = () => {};
-    consola.info = () => {};
-    consola.start = () => {};
+    consola.success = (() => {}) as any;
+    consola.warn = (() => {}) as any;
+    consola.info = (() => {}) as any;
+    consola.start = (() => {}) as any;
 
     if (!fs.existsSync(docsDir)) {
       fs.mkdirSync(docsDir);
