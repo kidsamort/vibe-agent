@@ -3,4 +3,6 @@ export interface Plugin {
   version: string;
   templates: string[];
   skills: string[];
+  basePath?: string;
+  actions?: Record<string, any>;
 }
