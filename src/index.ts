@@ -1,5 +1,6 @@
 import { consola } from "consola";
 import { initCommand } from "@/commands/init";
+import { runCommand } from "@/commands/run";
 
 consola.box("vibe-agent CLI initialized");
 
@@ -15,8 +16,10 @@ async function main() {
 
   if (command === "init") {
     await initCommand();
+  } else if (command === "run") {
+    await runCommand(args.slice(1));
   } else {
-    consola.info("Available commands: init");
+    consola.info("Available commands: init, run");
   }
 }
 
